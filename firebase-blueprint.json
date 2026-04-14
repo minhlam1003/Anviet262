@@ -82,6 +82,18 @@
         "bankOwner": { "type": "string" },
         "updatedAt": { "type": "string", "format": "date-time" }
       }
+    },
+    "AppUser": {
+      "title": "AppUser",
+      "description": "A user of the application with specific roles",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "staff"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "role"]
     }
   },
   "firestore": {
@@ -104,6 +116,10 @@
     "/settings/{configId}": {
       "schema": "StoreSettings",
       "description": "Store configuration settings"
+    },
+    "/users/{userId}": {
+      "schema": "AppUser",
+      "description": "Application users and their roles"
     }
   }
 }
